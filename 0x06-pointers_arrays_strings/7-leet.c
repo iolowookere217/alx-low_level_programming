@@ -1,12 +1,12 @@
 #include "main.h"
 
 /**
- * fleet - encodes a string into 1337
+ * leet - encodes a string into 1337
  * @s: string to encode
  * Return: address of s
  */
 
-char *fleet(char *s)
+char *leet(char *s)
 {
 	int i, j;
 	char a[] = "aAeEoOtTlL";
