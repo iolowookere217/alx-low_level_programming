@@ -1,46 +1,48 @@
 #include "main.h"
-#include <stdio.h>
 
 /**
- * print_buffer - Prints a buffer 10 bytes at a time, starting with
- *                the byte position, then showing the hex content,
- *                then displaying printable charcaters.
- * @b: The buffer to be printed.
- * @size: The number of bytes to be printed from the buffer.
+ * infinite_add - adds two numbers
+ * @n1: first number
+ * @n2: second number
+ * @r: buffer for result
+ * @size_r: buffer size
+ * ahhh! Crazy task! Expand your knowledge
+ * Return: address of r or 0
  */
-void print_buffer(char *b, int size)
+char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
-	int byte, index;
+	int i, j, k, l, m, n;
 
-	for (byte = 0; byte < size; byte += 10)
+	for (i = 0; n1[i]; i++)
+		;
+	for (j = 0; n2[j]; j++)
+		;
+	if (i > size_r || j > size_r)
+		return (0);
+	m = 0;
+	for (i -= 1, j -= 1, k = 0; k < size_r - 1; i--, j--, k++)
 	{
-		printf("%08x: ", byte);
-
-		for (index = 0; index < 10; index++)
+		n = m;
+		if (i >= 0)
+			n += n1[i] - '0';
+		if (j >= 0)
+			n += n2[j] - '0';
+		if (i < 0 && j < 0 && n == 0)
 		{
-			if ((index + byte) >= size)
-			printf("  ");
-			else
-				printf("%02x", *(b + index + byte));
-				if ((index % 2) != 0 && index != 0)
-					printf(" ");
-		}
-		for (index = 0; index < 10; index++)
-		{
-			if ((index + byte) >= size)
 			break;
-			else if (*(b + index + byte) >= 31 && *(b + index + byte) <= 126)
-				printf("%c", *(b + index + byte));
-			else
-				printf(".");
 		}
-
-		if (byte >= size)
-			continue;
-
-		printf("\n");
+		m = n / 10;
+		r[k] = n % 10 + '0';
 	}
-
-	if (size <= 0)
-	printf("\n");
+	r[k] = '\0';
+	if (i >= 0 || j >= 0 || m)
+		return (0);
+	for (k -= 1, l = 0; l < k; k--, l++)
+	{
+		m = r[k];
+		r[k] = r[l];
+		r[l] = m;
+	}
+	return (r);
 }
+
