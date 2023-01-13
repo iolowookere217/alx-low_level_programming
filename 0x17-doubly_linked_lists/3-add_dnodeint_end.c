@@ -5,7 +5,7 @@
 #include "lists.h"
 
 /**
- * * add_dnodeint_enewnode - add new node at the enewnode of a list.
+ * * add_dnodeint_end - add new node at the end of a list.
  *
  * * @head: head of linked list
  *
@@ -17,35 +17,78 @@
  *
  */
 
-dlistint_t *add_dnodeint_enewnode(dlistint_t **head, const int n)
+dlistint_t *add_dnodeint_end(dlistint_t **head, const int n)
 
 {
-	dlistint_t *newnode, *aux = *head;
+
+	dlistint_t *nd, *aux = *head;
+
+
 
 	if (head == NULL)
+
 	{
+
 		return (NULL);
+
 	}
-	newnode = malloc(sizeof(dlistint_t));
-	if (newnode == NULL)
+
+
+
+	nd = malloc(sizeof(dlistint_t));
+
+
+
+	if (nd == NULL)
+
 	{
+
 		return (NULL);
+
 	}
-	newnode->n = n;
+
+
+
+	nd->n = n;
+
 	if (!(*head))
+
 	{
-		newnode->prev = NULL, newnode->next = *head;
-		*head = newnode;
-		return (newnode);
+
+		nd->prev = NULL, nd->next = *head;
+
+		*head = nd;
+
+		return (nd);
+
 	}
+
+
+
 	while (aux->next)
+
 	{
+
 		aux = aux->next;
+
 	}
-	newnode->prev = aux;
-	newnode->next = NULL;
-	aux->next = newnode;
-	return (newnode);
+
+
+
+	nd->prev = aux;
+
+
+
+	nd->next = NULL;
+
+
+
+	aux->next = nd;
+
+
+
+	return (nd);
+
 }
 
 
