@@ -1,5 +1,5 @@
 * In this project, I learnt about:
------------------------------------
+--------------------------------------
 
 * What a URL is
 * What HTTP is
